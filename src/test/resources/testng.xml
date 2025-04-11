@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="ProjectSuite">
+    <test name="ProjectTest">
+        <classes>
+            <class name="com.demoproject.test.BrakClass"> </class>
+        </classes>
+    </test>
+</suite>
