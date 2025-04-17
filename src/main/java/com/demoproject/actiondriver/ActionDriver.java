@@ -17,6 +17,7 @@ public class ActionDriver {
         int implicitWait = Integer.parseInt(BaseClass.getProp().getProperty("explicitWait"));
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(implicitWait));
+        System.out.println("ActionDriver created...");
     }
 
     public void click(By by){
@@ -60,7 +61,7 @@ public class ActionDriver {
         }
     }
 
-    public boolean idDisplayed(By by){
+    public boolean isDisplayed(By by){
         try {
             waitForElementToBeVisible(by);
             return driver.findElement(by).isDisplayed();

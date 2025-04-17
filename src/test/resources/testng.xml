@@ -2,7 +2,8 @@
 <suite name="ProjectSuite">
     <test name="ProjectTest">
         <classes>
-            <class name="com.demoproject.test.BrakClass"> </class>
+            <class name="com.demoproject.test.LoginPageTest"> </class>
+            <class name="com.demoproject.test.HomePageTest"> </class>
         </classes>
     </test>
 </suite>

@@ -12,13 +12,26 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <fluentlenium.version>6.0.0</fluentlenium.version>
+        <selenium.version>4.9.0</selenium.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.29.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.fluentlenium</groupId>
+            <artifactId>fluentlenium-junit</artifactId>
+            <version>${fluentlenium.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.fluentlenium</groupId>
+            <artifactId>fluentlenium-assertj</artifactId>
+            <version>${fluentlenium.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

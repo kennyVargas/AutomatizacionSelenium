@@ -1,6 +1,7 @@
 package com.demoproject.pages;
 
 import com.demoproject.actiondriver.ActionDriver;
+import com.demoproject.base.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,21 +13,22 @@ public class LoginPage {
     private By errorMenssage = By.xpath("//p[text()='Invalid credentials']");
 
     public LoginPage(WebDriver driver){
-        this.actionDriver = new ActionDriver(driver);
+        //this.actionDriver = new ActionDriver(driver);
+        this.actionDriver = BaseClass.getActionDriver();
     }
 
     public void login(String userName,String password){
-        actionDriver.enterText(userNameField,"Admin");
-        actionDriver.enterText(passwordField,"admin123");
+        actionDriver.enterText(userNameField,userName);
+        actionDriver.enterText(passwordField,password);
         actionDriver.click(loginButton);
     }
     public boolean isErrorMessageDisplay(){
-        return actionDriver.idDisplayed(errorMenssage);
+        return actionDriver.isDisplayed(errorMenssage);
     }
-    public String getErrorMenssage(){
+    public String getErrorMessageText(){
         return actionDriver.getText(errorMenssage);
     }
-    public void verifyErrorMessage(String expectedError){
-        actionDriver.compareText(errorMenssage,expectedError);
+    public boolean verifyErrorMessage(String expectedError){
+        return actionDriver.compareText(errorMenssage,expectedError);
     }
 }

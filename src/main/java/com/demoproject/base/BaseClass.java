@@ -7,6 +7,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
 
+import com.demoproject.actiondriver.ActionDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -18,12 +19,16 @@ import org.testng.annotations.BeforeSuite;
 public class BaseClass {
     protected static Properties prop;
     protected WebDriver driver;
+    private static ActionDriver actionDriver;
     @BeforeMethod
     public void setup() throws IOException {
         System.out.println("Iniciando proceso...");
         launchBrowser();
         configureBrowser();
         staticWait(2);
+        if(actionDriver==null){
+            actionDriver = new ActionDriver(driver);
+        }
     }
 
     @BeforeSuite
@@ -79,6 +84,8 @@ public class BaseClass {
             }
 
         }
+        driver = null;
+        actionDriver = null;
     }
 
     public void staticWait(int seconds){
@@ -86,8 +93,19 @@ public class BaseClass {
     }
 
     public WebDriver getDriver(){
+        if(driver==null){
+            throw new IllegalStateException("WebDrive is not initialized");
+        }
         return this.driver;
     }
+
+    public static ActionDriver getActionDriver() {
+        if(actionDriver==null){
+            throw new IllegalStateException("ActionDriver is not initialized");
+        }
+        return actionDriver;
+    }
+
     public void setDrive(WebDriver driver){
         this.driver = driver;
     }
